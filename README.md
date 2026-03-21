@@ -1,5 +1,5 @@
 [//]: # (npm-text-start)
-> **TITAN** — A TypeScript AI agent framework with autonomous self-improvement, LoRA fine-tuning, ~155 tools, 34 LLM providers, 15 channels, mesh networking, LiveKit voice, and a React dashboard. It trains itself. `npm i -g titan-agent`
+> **TITAN** — A TypeScript AI agent framework with autonomous self-improvement, LoRA fine-tuning, ~155 tools, 35 LLM providers, 15 channels, mesh networking, LiveKit voice, and a React dashboard. It trains itself. `npm i -g titan-agent`
 [//]: # (npm-text-end)
 
 # TITAN — The Intelligent Task Automation Network
@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <strong>An autonomous AI agent framework that actually does things — and gets better at it every day. Sub-agent orchestration, goal-driven autopilot, deliberative reasoning, sandbox code execution, browser automation with CAPTCHA solving, autonomous self-improvement, local model fine-tuning with dual training pipelines, 15 channels, 34 providers, ~155 tools, ~4,321 tests. It trains itself. Pure JavaScript. No native compilation. No, seriously.</strong>
+  <strong>An autonomous AI agent framework that actually does things — and gets better at it every day. Sub-agent orchestration, goal-driven autopilot, deliberative reasoning, sandbox code execution, browser automation with CAPTCHA solving, autonomous self-improvement, local model fine-tuning with dual training pipelines, 15 channels, 35 providers, ~155 tools, ~4,329 tests. It trains itself. Pure JavaScript. No native compilation. No, seriously.</strong>
 </p>
 
 <p align="center">
@@ -22,10 +22,10 @@
   <a href="https://www.npmjs.com/package/titan-agent"><img src="https://img.shields.io/npm/v/titan-agent?color=blue&label=npm" alt="npm version"/></a>
   <a href="https://github.com/Djtony707/TITAN/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/Djtony707/TITAN/ci.yml?label=tests" alt="CI Status"/></a>
   <a href="https://github.com/Djtony707/TITAN/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="License"/></a>
-  <a href="#providers"><img src="https://img.shields.io/badge/providers-34-purple" alt="34 Providers"/></a>
+  <a href="#providers"><img src="https://img.shields.io/badge/providers-35-purple" alt="34 Providers"/></a>
   <a href="#built-in-tools"><img src="https://img.shields.io/badge/tools-155-orange" alt="155 Tools"/></a>
   <a href="#channels"><img src="https://img.shields.io/badge/channels-15-blue" alt="15 Channels"/></a>
-  <a href="#tests"><img src="https://img.shields.io/badge/tests-4%2C321-brightgreen" alt="4,321 Tests"/></a>
+  <a href="#tests"><img src="https://img.shields.io/badge/tests-4%2C329-brightgreen" alt="4,321 Tests"/></a>
   <a href="https://github.com/Djtony707/TITAN/graphs/contributors"><img src="https://img.shields.io/github/contributors/Djtony707/TITAN" alt="Contributors"/></a>
 </p>
 
@@ -68,7 +68,7 @@
 
 ## Why TITAN?
 
-TITAN is the only open-source agent framework that **trains itself on your GPU**. While other frameworks focus on orchestration or chat, TITAN is a complete autonomous platform — self-improvement, voice, GUI, 15 channels, mesh networking, and 34 providers in one package.
+TITAN is the only open-source agent framework that **trains itself on your GPU**. While other frameworks focus on orchestration or chat, TITAN is a complete autonomous platform — self-improvement, voice, GUI, 15 channels, mesh networking, and 35 providers in one package.
 
 | Feature | TITAN | OpenClaw | NemoClaw | Auto-GPT | CrewAI | LangGraph |
 |---------|:-----:|:--------:|:--------:|:--------:|:------:|:---------:|
@@ -216,7 +216,7 @@ No custom code required for any of the above. TITAN ships with 100+ loaded skill
        +----+----+       IRC                mDNS + Tailscale
        |         |       Mattermost         Peer Discovery
     Skills    Providers  Lark/Feishu        WS Transport
-    82 loaded 34 total   Email (IMAP)
+    100+ loaded 36 total   Email (IMAP)
     ~155 tools (4 native  LINE               Voice
        |       + 30       Zulip             LiveKit WebRTC
     Memory     compat)
@@ -433,7 +433,7 @@ TITAN supports split-machine deployments — run the gateway on a low-power node
 
 ```bash
 # On your Pi 5 / Mini PC (gateway)
-OLLAMA_BASE_URL=http://192.168.1.11:11434  # Points to GPU machine
+OLLAMA_BASE_URL=http://<gpu-machine-ip>:11434  # Points to GPU machine
 
 # On your GPU PC
 ollama serve  # Exposes models on the LAN
@@ -469,7 +469,7 @@ Configure via `~/.titan/titan.json` or the Mission Control Settings panel.
 
 ## Providers
 
-34 AI providers. Add your API key and go. TITAN routes, fails over, and load-balances automatically with configurable fallback chains.
+36 AI providers. Add your API key and go. TITAN routes, fails over, and load-balances automatically with configurable fallback chains.
 
 | Provider | Type | Notable Models |
 |----------|------|----------------|
@@ -507,8 +507,10 @@ Configure via `~/.titan/titan.json` or the Mission Control Settings panel.
 | **Lepton** | OpenAI-compat | LLaMA 3.3, Mixtral |
 | **Anyscale** | OpenAI-compat | LLaMA, Mistral variants |
 | **OctoAI** | OpenAI-compat | LLaMA, Mixtral variants |
+| **NVIDIA NIM** | OpenAI-compat | Nemotron Super 49B, Ultra 253B, Nano 30B |
+| **MiniMax** | OpenAI-compat | M2.7 (2.3T MoE, 200K ctx), M2.5, M1 |
 
-**4 native providers** with full API integration. **30 OpenAI-compatible providers** through a unified adapter. All 34 support automatic failover with configurable fallback chains — if your primary model goes down, TITAN cascades to the next one automatically.
+**4 native providers** with full API integration. **32 OpenAI-compatible providers** through a unified adapter. All 36 support automatic failover with configurable fallback chains — if your primary model goes down, TITAN cascades to the next one automatically.
 
 ```bash
 titan model --discover                              # Live-detect all available models
@@ -519,6 +521,38 @@ titan model --alias fast=openai/gpt-4o-mini         # Create shortcuts
 Built-in aliases: `fast`, `smart`, `cheap`, `reasoning`, `local` — fully configurable.
 
 > Running locally? See [docs/MODELS.md](docs/MODELS.md) for GPU-tiered Ollama model recommendations.
+
+---
+
+## Model Benchmark
+
+We benchmark every Ollama cloud and local model through TITAN's gateway across 7 categories: reasoning, code, math, tool use, instruction following, creative writing, and summarization. **March 2026 results:**
+
+| # | Model | Score | Grade | Latency | Type | Best For |
+|---|-------|-------|-------|---------|------|----------|
+| 1 | **GLM-5** | 8.5/10 | A- | 12.3s | ☁️ cloud | Code generation, summarization |
+| 2 | **Devstral Small 2** | 8.5/10 | A- | 5.3s | 💻 local (15GB) | Code generation, reasoning |
+| 3 | **Qwen3 Coder Next** | 8.4/10 | B+ | 3.5s | ☁️ cloud | Tool use (perfect 10), fastest cloud |
+| 4 | **GLM-4.7** | 8.4/10 | B+ | 16.1s | ☁️ cloud | Code generation, creative writing |
+| 5 | **Qwen 3.5 35B** | 8.3/10 | B+ | 11.7s | 💻 local (23GB) | Tool use, code generation |
+| 6 | **Nemotron 3 Nano 24B** | 8.3/10 | B+ | 7.0s | 💻 local (24GB) | Tool use, creative writing |
+| 7 | **Nemotron 3 Nano 4B** | 8.3/10 | B+ | 2.3s | 💻 local (2.8GB) | 🏆 Best value — full B+ at 2.8GB |
+| 8 | **MiniMax M2** | 8.3/10 | B+ | 10.2s | ☁️ cloud | Tool use (perfect 10) |
+| 9 | **Nemotron 3 Super** | 8.2/10 | B+ | 13.0s | ☁️ cloud | Math, tool use |
+| 10 | **Kimi K2.5** | 8.2/10 | B+ | 12.4s | ☁️ cloud | Tool use (perfect 10) |
+| 11 | **Qwen 3.5 397B** | 8.0/10 | B+ | 9.4s | ☁️ cloud | Code generation, creative writing |
+| 12 | **MiniMax M2.7** | 7.9/10 | B | 24.8s | ☁️ cloud | Code generation, creative writing |
+| 13 | **DeepSeek V3.1 671B** | 7.7/10 | B | 8.9s | ☁️ cloud | Code generation, creative writing |
+| 14 | **DeepSeek V3.2** | 7.6/10 | B | 22.8s | ☁️ cloud | Code, creative — weak tool use |
+| 15 | **Gemini 3 Flash Preview** | 7.6/10 | B | 4.9s | ☁️ cloud | Code, fast — tool use errors |
+
+**Key takeaways:**
+- 🥇 **GLM-5** is the top overall model — strong across every category
+- 🏆 **Nemotron 3 Nano 4B** is the best value play — B+ grade at only 2.8GB VRAM and 2.3s latency
+- ⚡ **Qwen3 Coder Next** is the fastest cloud model with perfect tool use
+- 💻 All 4 local models scored B+ — you don't need cloud APIs for great results
+
+> 📊 Full per-category breakdown: [benchmarks/MODEL_COMPARISON.md](benchmarks/MODEL_COMPARISON.md)
 
 ---
 
@@ -594,7 +628,7 @@ Approved peers persist to `~/.titan/approved-peers.json` and reconnect automatic
 }
 ```
 
-Or add static peers manually: `titan mesh --add "192.168.1.100:48420"`
+Or add static peers manually: `titan mesh --add "<peer-ip>:48420"`
 
 ---
 
@@ -708,7 +742,7 @@ Before: 155 tools x ~50 tokens each = ~7,750 input tokens
 After:  10 core tools + tool_search  = ~700 input tokens (88% reduction)
 ```
 
-Works with all 34 providers. Especially beneficial for smaller local models where context window is precious.
+Works with all 35 providers. Especially beneficial for smaller local models where context window is precious.
 
 ---
 
@@ -864,7 +898,7 @@ The temporal graph is pure TypeScript — no Neo4j, no Docker, no external servi
 
 ```bash
 npm run build          # tsup ESM production build
-npm run test           # vitest (4,321 tests across 135 files)
+npm run test           # vitest (4,329 tests across 135 files)
 npm run test:coverage  # ~82% line coverage
 npm run ci             # typecheck + full test suite
 npm run typecheck      # tsc --noEmit
@@ -880,10 +914,11 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the full development guide and [ARCHI
 
 ### Current (v2026.10.x)
 
+- **v2026.10.45**: **MiniMax M2.7 + Autopilot Dry-Run** — New MiniMax provider (M2.7, 2.3T MoE, 200K context, provider #32). Community PR: autopilot dry-run mode by @sastarogers. 36 providers, 4,329 tests.
 - **v2026.10.43**: **VRAM Orchestrator** — Automatic GPU VRAM management for RTX 5090. Monitors GPU via nvidia-smi, tracks Ollama model loads, auto-swaps to smaller models when GPU services need memory. Time-bounded leases with auto-expiry, async mutex for serialization, emergency OOM unload. 3 agent tools, 4 API endpoints, config schema.
 - **v2026.10.42**: **NVIDIA GPU Skills** — cuOpt v26.02 async VRP optimization (tested live, 74ms solve), AI-Q deep research via Nemotron Super NIM API, OpenShell K3s sandbox engine. NVIDIA skill loader gated behind `TITAN_NVIDIA=1`. Voice mic leak fix. 6 TypeScript fixes.
 - **v2026.10.41**: **Hotfix** — Tool visibility fix (security.allowedTools default), OpenAI-compat keepModelPrefix bug, voice system prompt rewrite, voice core tools, voice model override, HA debug logging.
-- **v2026.10.40**: **9 New Skills** — Structured output, workflow engine, social scheduler, agent handoff, event triggers, knowledge base, eval framework, approval gates, A2A protocol. 2 critical security fixes. 4,321 tests across 135 files.
+- **v2026.10.40**: **9 New Skills** — Structured output, workflow engine, social scheduler, agent handoff, event triggers, knowledge base, eval framework, approval gates, A2A protocol. 2 critical security fixes. 4,329 tests across 135 files.
 - **v2026.10.39**: **Security Release** — Resolved all 23 Dependabot alerts, 0 vulnerabilities.
 - **v2026.10.28**: **Bug Fixes** — Vector search circular dependency fixed (`initVectors` now calls Ollama `/api/embed` directly instead of `embed()` which was gated on `available=false` during init, causing RAG to never initialize). ActiveLearning no-op fixed (no longer records "use X instead of X" when same tool succeeds on retry). ESLint prefer-const fix.
 - **v2026.10.27**: **System Prompt Architecture Overhaul** — Complete redesign of how TITAN instructs AI models to use tools reliably. Tool Execution rules now appear first in the system prompt (before identity/capabilities). ReAct loop (Reason→Act→Observe) taught to every model. MUST/NEVER directives and negative examples (wrong vs. right behavior) burn in correct tool-call patterns. Task-aware dynamic injection appends `[TASK ENFORCEMENT]` blocks for file-write, research, and shell tasks detected in the message. API-level `tool_choice: "required"` added for OpenAI/Ollama and `tool_choice: {type: "any"}` for Anthropic on enforced first rounds. Ollama cloud prompt compression fixed — tool enforcement rules now survive compression (limit raised 2000→3500 chars). All 11 sub-agent templates (Explorer, Coder, Browser, Analyst, Researcher, Reporter, Fact Checker, Dev Debugger, Dev Tester, Dev Reviewer, Dev Architect) rewritten with tool-specific guidance, MUST rules, and output format requirements. New `agent.forceToolUse` config flag.
@@ -931,6 +966,15 @@ npm run dev:gateway
 ```
 
 We don't bite. Unless you submit a PR that adds `is-even` as a dependency.
+
+### Contributors
+
+Thanks to everyone who has contributed to TITAN:
+
+| Contributor | Contribution |
+|-------------|-------------|
+| [Tony Elliott](https://github.com/Djtony707) | Creator & maintainer |
+| [sastarogers](https://github.com/sastarogers) | Autopilot dry-run mode ([#7](https://github.com/Djtony707/TITAN/pull/7)) |
 
 ---
 
